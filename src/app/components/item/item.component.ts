@@ -10,11 +10,16 @@ import { Observable } from 'rxjs';
 export class ItemComponent implements OnInit {
   @Input() itemId!: number;
   item$!: Observable<any>;
+  viewComments: boolean = false;
 
   constructor(private newsService: NewsService) {}
 
   ngOnInit(): void {
     if (this.itemId)
       this.item$ = this.newsService.getStoryDetails(this.itemId);  
+  }
+
+  toggleComment(): void {
+    this.viewComments = !this.viewComments;
   }
 }

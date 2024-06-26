@@ -1,7 +1,32 @@
 <div *ngIf="item$ | async as item">
-    <div class="item">
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.text }}</p>
-        <a [routerLink]="item.id">...</a>
+    <div class="item border p-4 mb-4 rounded shadow-lg bg-white">
+      <div class="flex justify-between">
+        <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+        <a *ngIf="item.url" [href]="item.url" target="_blank" class="text-blue-500 font-medium">more</a>
+      </div>
+      <p class="text-gray-600 mb-2">by {{ item.by }} | {{ item.time | date:'medium' }}</p>
+      <p *ngIf="item.type === 'story'" class="text-gray-600 mb-2">{{ item.score }} Up votes</p>
+      <div *ngIf="item.text" class="mb-2" [innerHTML]="item.text"></div>
+  
+      <div *ngIf="item.type === 'story'" class="mt-2">
+        <p>{{ item.descendants }} Comments</p>
+        <button *ngIf="item.kids" class="mx-2" (click)="toggleComment()">view/hide</button>
+      </div>
+      <div *ngIf="item.type === 'comment'" class="mt-2">
+        <!-- <p>By: {{ item.by }}</p> -->
+        <div *ngIf="item.kids?.length">
+          <p>Replies: {{ item.kids.length }}</p>
+        </div>
+      </div>
+      <div *ngIf="item.kids && viewComments" class="mt-2">
+        <div *ngFor="let kid of item.kids">
+          <app-item [itemId]="kid"></app-item>
+        </div>
+      </div>
+      <div *ngIf="item.type === 'job'" class="mt-2">
+        <p>Job ID: {{ item.id }}</p>
+        <a *ngIf="item.url" [href]="item.url" target="_blank" class="text-blue-500">Apply here</a>
+      </div>
     </div>
-</div>
+  </div>
+  
