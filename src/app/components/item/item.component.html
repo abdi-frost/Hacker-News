@@ -1,0 +1,7 @@
+<div *ngIf="item$ | async as item">
+    <div class="item">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+        <a [routerLink]="item.id">...</a>
+    </div>
+</div>

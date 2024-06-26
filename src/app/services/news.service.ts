@@ -27,6 +27,9 @@ export class NewsService {
     return this.http.get<any[]>(`${this.baseUrl}/jobstories.json`);
   }
 
+  getStoryDetails(storyId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/item/${storyId}.json`);
+  }
   // getAskStories(): Observable<any[]> {
   //   return this.http.get<any[]>(`${this.baseUrl}/askstories.json`);
   // }

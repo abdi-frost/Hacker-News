@@ -20,13 +20,6 @@ export class HackerNewsService {
     );
   }
 
-  getStoryDetails(storyId: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/item/${storyId}.json`).pipe(
-      catchError(error => {
-        console.error(`Error fetching story ${storyId} details:`, error);
-        return throwError(error);
-      })
-    );
-  }
+  
 
 }

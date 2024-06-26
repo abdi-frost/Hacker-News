@@ -10,6 +10,7 @@ import { NewState, FetchNewItems } from '../../state/new.state';
 })
 
 export class HomeComponent implements OnInit{
+  p: number = 1;
 
   @Select(NewState.items) items$!: Observable<any[]>;
   @Select(NewState.loading) loading$!: Observable<boolean>;

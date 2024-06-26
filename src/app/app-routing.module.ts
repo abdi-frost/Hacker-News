@@ -5,6 +5,7 @@ import { NewComponent } from './components/new/new.component'
 import { AskComponent } from './components/ask/ask.component'
 import { ShowComponent} from './components/show/show.component'
 import { JobsComponent } from './components/jobs/jobs.component'
+import { StoryDetailComponent } from './components/story-detail/story-detail.component'
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'ask', component: AskComponent },
   { path: 'show', component: ShowComponent },
   { path: 'jobs', component: JobsComponent },
+  { path: 'story/:id', component: StoryDetailComponent },
   { path: '**', redirectTo: '' },
 ];
 

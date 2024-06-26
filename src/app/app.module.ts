@@ -27,8 +27,11 @@ import { AskComponent } from './components/ask/ask.component';
 
 import { AskState } from './state/ask.state'
 import { NewState } from './state/new.state'
-import { JobState } from './state/job.state'
+import { JobState } from './state/job.state';
+import { StoryDetailComponent } from './components/story-detail/story-detail.component'
 
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ItemComponent } from './components/item/item.component'
 registerLocaleData(en);
 // import { HackerNewsService } from './services/hacker-news.service';
 // import { StoryState } from './state/story.state';
@@ -43,6 +46,8 @@ registerLocaleData(en);
     ShowComponent,
     NewComponent,
     AskComponent,
+    StoryDetailComponent,
+    ItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,8 @@ registerLocaleData(en);
     FormsModule, 
     HttpClientModule, 
     BrowserAnimationsModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    NgxPaginationModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
