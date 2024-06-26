@@ -1,0 +1,23 @@
+<div>
+    <header class="bg-gray-100 text-gray-700 py-4 flex gap-5">
+        <div class="container mx-auto px-4">
+            <h1 class="text-lg font-bold">Hacker News</h1>
+        </div>
+        <ul class="flex mx-5">
+            <li class="mr-6"><a routerLink="/" class="hover:text-gray-300">Home</a></li>
+            <li class="mr-6"><a routerLink="/new" class="hover:text-gray-300">New</a></li>
+            <li class="mr-6"><a routerLink="/ask" class="hover:text-gray-300">Ask</a></li>
+            <li class="mr-6"><a routerLink="/show" class="hover:text-gray-300">Show</a></li>
+            <li><a routerLink="/jobs" class="hover:text-gray-300">Jobs</a></li>
+        </ul>
+        
+        <!-- <div>
+            <input type="search" placeholder="Search">
+        </div> -->
+    </header>
+    
+    <main class="container mx-auto px-4 py-8">
+        <router-outlet></router-outlet>
+    </main>
+    
+</div>
