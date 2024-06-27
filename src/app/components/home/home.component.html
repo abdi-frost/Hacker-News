@@ -1,14 +1,7 @@
-<!-- <div *ngFor="let item of (items$ | async) | paginate: { itemsPerPage: 10, currentPage: p }" class="m-3">
-    {{item | json}}
-</div>
-<pagination-controls (pageChange)="p = $event"></pagination-controls> -->
-
 <div *ngIf="items$ | async as items">
     <div
         *ngFor="let item of items | paginate: { itemsPerPage: 10, currentPage: p }">
-        <!-- Display item -->
-        <!-- {{ item | json }} -->
         <app-item [itemId]="item"></app-item>
     </div>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>
 </div>

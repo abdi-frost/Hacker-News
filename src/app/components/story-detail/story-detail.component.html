@@ -1,5 +1,47 @@
-<div *ngIf="story">
-    <h2>{{ story.title }}</h2>
-    <p>{{ story.text }}</p>
-    <a [href]="story.url" target="_blank">Read more</a>
+<div *ngIf="story$ | async as story"
+    class="story-detail-container border p-4 mb-4 rounded shadow-lg bg-white">
+    <div class="header flex justify-between">
+        <h2 class="text-xl font-bold mb-2">{{ story.title }}</h2>
+        <a *ngIf="story.url" [href]="story.url" target="_blank"
+            class="text-blue-500 font-medium">Read more</a>
+    </div>
+    <p class="text-gray-600 mb-2">by {{ story.by }} | {{ story.time |
+        date:'medium' }}</p>
+    <p *ngIf="story.type === 'story'" class="text-gray-600 mb-2">{{ story.score
+        }} Up votes</p>
+
+    <div *ngIf="story.text" class="mb-2">
+        <span [innerHTML]="truncateText(story.text, showFullText)"></span>
+        <button *ngIf="story.text.length > maxTextLength" (click)="toggleText()"
+            class="text-blue-500 ml-2">
+            {{ showFullText ? 'Show Less' : 'Read More' }}
+        </button>
+    </div>
+
+    <!-- Display job details if the story type is 'job' -->
+    <div *ngIf="story.type === 'job'" class="mt-2">
+        <p>Job ID: {{ story.id }}</p>
+        <a *ngIf="story.url" [href]="story.url" target="_blank"
+            class="text-blue-500">Apply here</a>
+    </div>
+
+    <!-- Display comment details if the story type is 'comment' -->
+    <div *ngIf="story.type === 'comment'" class="mt-2">
+        <p>Comment by: {{ story.by }}</p>
+        <p>Comment: {{ story.text }}</p>
+    </div>
+
+    <!-- Toggler for comments -->
+    <div *ngIf="story.type === 'story'" class="mt-2">
+        <p>{{ story.descendants }} Comments</p>
+        <button *ngIf="story.kids" class="mx-2"
+            (click)="toggleComments()">View/Hide Comments</button>
+    </div>
+
+    <!-- Display comments and nested replies -->
+    <div *ngIf="story.kids && viewComments" class="mt-2">
+        <div *ngFor="let kid of story.kids">
+            <app-item [itemId]="kid"></app-item>
+        </div>
+    </div>
 </div>

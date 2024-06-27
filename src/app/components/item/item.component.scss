@@ -1,0 +1,17 @@
+/* item.component.scss */
+.skeleton {
+    @apply animate-pulse;
+  }
+  
+  .skeleton-title {
+    @apply bg-gray-300 h-6 w-3/4 mb-2;
+  }
+  
+  .skeleton-text {
+    @apply bg-gray-300 h-4 mb-2;
+  }
+  
+  .skeleton-button {
+    @apply bg-gray-300 h-8 w-1/4 mt-4;
+  }
+  

@@ -6,24 +6,16 @@
     float: left;
 }
 
-[nz-menu] {
-    line-height: 64px;
+.active-link {
+    position: relative;
+    color: black; /* Optional: Change text color for the active link */
 }
-
-nz-breadcrumb {
-    margin: 16px 0;
-}
-
-nz-content {
-    padding: 0 50px;
-}
-
-nz-footer {
-    text-align: center;
-}
-
-.inner-content {
-    background: #fff;
-    padding: 24px;
-    min-height: 280px;
+.active-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: black;
 }

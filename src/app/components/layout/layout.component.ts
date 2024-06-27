@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class LayoutComponent {
 
+  currentYear: number = new Date().getFullYear();
+
 }

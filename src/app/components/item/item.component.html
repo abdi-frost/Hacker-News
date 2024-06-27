@@ -1,32 +1,59 @@
-<div *ngIf="item$ | async as item">
+<div *ngIf="isLoading; else loadedContent" class="skeleton border p-4 mb-4 rounded shadow-lg bg-white">
+  <div class="flex justify-between">
+    <div class="skeleton-title"></div>
+    <div class="skeleton-button"></div>
+  </div>
+  <div class="skeleton-text w-1/2"></div>
+  <div class="skeleton-text w-1/4"></div>
+  <div class="skeleton-text"></div>
+  <div class="skeleton-text"></div>
+  <div class="skeleton-text w-1/2"></div>
+</div>
+
+<ng-template #loadedContent>
+  <div *ngIf="item$ | async as item">
     <div class="item border p-4 mb-4 rounded shadow-lg bg-white">
       <div class="flex justify-between">
-        <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+        <a [routerLink]="['/story', item.id]"  class="text-xl font-bold mb-2 hover:text-gray-600">{{ item.title }}</a>
         <a *ngIf="item.url" [href]="item.url" target="_blank" class="text-blue-500 font-medium">more</a>
       </div>
       <p class="text-gray-600 mb-2">by {{ item.by }} | {{ item.time | date:'medium' }}</p>
       <p *ngIf="item.type === 'story'" class="text-gray-600 mb-2">{{ item.score }} Up votes</p>
-      <div *ngIf="item.text" class="mb-2" [innerHTML]="item.text"></div>
+      
+      <div *ngIf="item.text" class="mb-2">
+        <span [innerHTML]="truncateText(item.text, showFullText)"></span>
+        <button *ngIf="item.text.length > maxTextLength" (click)="toggleText()" class="text-blue-500 ml-2">
+          {{ showFullText ? 'Show Less' : 'Read More' }}
+        </button>
+      </div>
   
       <div *ngIf="item.type === 'story'" class="mt-2">
-        <p>{{ item.descendants }} Comments</p>
+        <p>{{ item.kids?.length || 0 }} Comments</p>
         <button *ngIf="item.kids" class="mx-2" (click)="toggleComment()">view/hide</button>
       </div>
+      
       <div *ngIf="item.type === 'comment'" class="mt-2">
-        <!-- <p>By: {{ item.by }}</p> -->
         <div *ngIf="item.kids?.length">
           <p>Replies: {{ item.kids.length }}</p>
+          <button *ngIf="item.kids" class="mx-2" (click)="toggleReplies()">view/hide replies</button>
         </div>
       </div>
+      
       <div *ngIf="item.kids && viewComments" class="mt-2">
         <div *ngFor="let kid of item.kids">
           <app-item [itemId]="kid"></app-item>
         </div>
       </div>
+      
+      <div *ngIf="item.kids && viewReplies" class="mt-2">
+        <div *ngFor="let kid of item.kids">
+          <app-item [itemId]="kid"></app-item>
+        </div>
+      </div>
+      
       <div *ngIf="item.type === 'job'" class="mt-2">
-        <p>Job ID: {{ item.id }}</p>
         <a *ngIf="item.url" [href]="item.url" target="_blank" class="text-blue-500">Apply here</a>
       </div>
     </div>
   </div>
-  
+</ng-template>
