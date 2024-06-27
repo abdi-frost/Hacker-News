@@ -5,13 +5,19 @@
             <span class="text-xl mx-2">|</span>
             <ul class="flex mx-5 inline">
                 <li class="mr-6">
-                    <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="hover:text-gray-300">Home</a>
+                    <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="hover:text-gray-300">New</a>
                 </li>
                 <li class="mr-6">
                     <a routerLink="/jobs" routerLinkActive="active-link" class="hover:text-gray-300">Jobs</a>
                 </li>
                 <li class="mr-6">
                     <a routerLink="/ask" routerLinkActive="active-link" class="hover:text-gray-300">Ask</a>
+                </li>
+                <li class="mr-6">
+                    <a routerLink="/top" routerLinkActive="active-link" class="hover:text-gray-300">Top</a>
+                </li>
+                <li class="mr-6">
+                    <a routerLink="/best" routerLinkActive="active-link" class="hover:text-gray-300">Best</a>
                 </li>
             </ul>
         </div>
@@ -21,7 +27,7 @@
         <router-outlet></router-outlet>
     </main>
     
-    <footer class="text-gray-700 py-4 flex justify-center border border-gray-200 mx-5 mt-5 rounded rounded-lg">
+    <footer class="text-gray-700 py-4 flex justify-center mx-5 mt-5">
         <div class="container flex justify-center items-center p-4">
             <a routerLink="https://github.com/abdi-frost" target="_blank" class="text-sm">
                 Developed by Abdi Megersa © {{ currentYear }}

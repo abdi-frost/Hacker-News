@@ -25,13 +25,17 @@ import { ShowComponent } from './components/show/show.component';
 import { NewComponent } from './components/new/new.component';
 import { AskComponent } from './components/ask/ask.component';
 
-import { AskState } from './state/ask.state'
-import { NewState } from './state/new.state'
+import { AskState } from './state/ask.state';
+import { NewState } from './state/new.state';
 import { JobState } from './state/job.state';
+import { BestState } from './state/best.state';
+import { TopState } from './state/top.state';
 import { StoryDetailComponent } from './components/story-detail/story-detail.component'
 
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ItemComponent } from './components/item/item.component'
+import { ItemComponent } from './components/item/item.component';
+import { BestComponent } from './components/best/best.component';
+import { TopComponent } from './components/top/top.component'
 registerLocaleData(en);
 // import { HackerNewsService } from './services/hacker-news.service';
 // import { StoryState } from './state/story.state';
@@ -48,11 +52,13 @@ registerLocaleData(en);
     AskComponent,
     StoryDetailComponent,
     ItemComponent,
+    BestComponent,
+    TopComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxsModule.forRoot([NewState, AskState, JobState],  { developmentMode: true }), // Register your state modules here
+    NgxsModule.forRoot([NewState, AskState, JobState, BestState, TopState],  { developmentMode: true }), // Register your state modules here
     NgxsReduxDevtoolsPluginModule.forRoot(), // Optional
     NgxsLoggerPluginModule.forRoot(),
     FormsModule, 

@@ -30,9 +30,14 @@ export class NewsService {
   getStoryDetails(storyId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/item/${storyId}.json`);
   }
-  // getAskStories(): Observable<any[]> {
-  //   return this.http.get<any[]>(`${this.baseUrl}/askstories.json`);
-  // }
+
+  getBestStories(): Observable<number[]> {
+    return this.http.get<number[]>(`${this.baseUrl}/beststories.json`);
+  }
+
+  getShowStories(): Observable<number[]> {
+    return this.http.get<number[]>(`${this.baseUrl}/showstories.json`);
+  }
 
   // Implement other API methods as needed (e.g., getNewStories, getAskStories, etc.)
 }
