@@ -19,7 +19,7 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 
-import { NgZorroAntdModule } from './modules/ng-zorro-antd/ng-zorro-antd.module';
+// import { NgZorroAntdModule } from './modules/ng-zorro-antd/ng-zorro-antd.module';
 import { JobsComponent } from './components/jobs/jobs.component';
 import { ShowComponent } from './components/show/show.component';
 import { NewComponent } from './components/new/new.component';
@@ -64,7 +64,7 @@ registerLocaleData(en);
     FormsModule, 
     HttpClientModule, 
     BrowserAnimationsModule,
-    NgZorroAntdModule,
+    // NgZorroAntdModule,
     NgxPaginationModule
   ],
   providers: [
